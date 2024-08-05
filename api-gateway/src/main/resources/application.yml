@@ -1,0 +1,21 @@
+server:
+  port: 8202
+
+spring:
+  application:
+    name: "api-gateway" # id приложения - желательно всегда в микросервисах указывать
+  cloud:
+    # для корректной работы api-gateway
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+
+eureka:
+  client:
+    #  url куда будет происходить регистрация микросервисов и других действий
+    service-url:
+      defaultZone: http://localhost:8201/eureka
+
+

@@ -2,3 +2,5 @@ rootProject.name = 'sprinng-micro-1'
 
 
 includeBuild 'eureka-server'
+includeBuild 'eureka-client'
+includeBuild 'api-gateway'
