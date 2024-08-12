@@ -9,8 +9,9 @@ eureka:
   client:
     #  url куда будет происходить регистрация микросервисов и других действий
     service-url:
-      defaultZone: http://localhost:8201/eureka
+      defaultZone: http://localhost:8761/eureka
   instance:
     lease-renewal-interval-in-seconds: 1
+    instance-id: ${spring.application.name}:${random.uuid} # для того чтобы каждый instance имел уникальный id
 
 

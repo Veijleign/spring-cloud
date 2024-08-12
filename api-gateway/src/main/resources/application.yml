@@ -1,5 +1,5 @@
 server:
-  port: 8202
+  port: 8765
 
 spring:
   application:
@@ -11,11 +11,18 @@ spring:
         locator:
           enabled: true
           lower-case-service-id: true
-
+      routes[0]:
+        id: test
+        uri: lb://eureka-client
+        predicates[0]: Path=/api/v1/client1/test
+        predicates[1]: Method=GET
+      routes[1]:
+        id: client2
+        uri: lb://eureka-client-2
+        predicates[0]: Path=/api/v1/client2/new
+        predicates[1]: Method=GET
 eureka:
   client:
     #  url куда будет происходить регистрация микросервисов и других действий
     service-url:
-      defaultZone: http://localhost:8201/eureka
-
-
+      defaultZone: http://localhost:8761/eureka
